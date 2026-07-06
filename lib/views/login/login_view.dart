@@ -6,7 +6,7 @@ import 'package:mvvm_login/views/login/widgets/login_button_widget.dart';
 import 'package:mvvm_login/res/color/colors.dart';
 import 'package:mvvm_login/view_models/controllers/login/login_controller.dart';
 import 'package:network_checker/network_checker.dart';
-// import 'package:network_checker/network_checker.dart';
+import 'package:mvvm_login/views/login/widgets/auth_links_widget.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -67,30 +67,9 @@ class _LoginViewState extends State<LoginView> {
                 LoginButton(
                   formKey: _formKey,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      onPressed: () { },
-                      child: Text(
-                        "Already logged in?",
-                        style: TextStyle(
-                          color: AppColor.primaryColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () { },
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(
-                          color: AppColor.primaryColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
+                AuthLinksWidget(
+                  onAlreadyLoggedIn: () { },
+                  onForgotPassword: () { },
                 ),
               ],
             ),
