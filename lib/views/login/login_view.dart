@@ -39,14 +39,14 @@ class _LoginViewState extends State<LoginView> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
+                 Text(
                   "Login Now!",
                   style: TextStyle(
                       color: AppColor.primaryColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 35),
                 ),
-                const SizedBox(
+                 SizedBox(
                   height: 80,
                 ),
                 Form(
@@ -54,18 +54,43 @@ class _LoginViewState extends State<LoginView> {
                   child: Column(
                     children: [
                       InputEmailWidget(),
-                      const SizedBox(
+                       SizedBox(
                         height: 20,
                       ),
                       InputPasswordWidget(),
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 60,
+                 SizedBox(
+                  height: 40,
                 ),
                 LoginButton(
                   formKey: _formKey,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () { },
+                      child: Text(
+                        "Already logged in?",
+                        style: TextStyle(
+                          color: AppColor.primaryColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () { },
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                          color: AppColor.primaryColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
