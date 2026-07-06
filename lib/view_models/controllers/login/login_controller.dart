@@ -9,7 +9,7 @@ import 'package:mvvm_login/view_models/user_prefrence/user_prefrence.dart';
 class LoginViewModel extends GetxController {
   final _api = LoginRepository();
 
-  UserPreference userPrefrence = UserPreference();
+  UserPreference userPreference = UserPreference();
 
   final emailController = TextEditingController().obs;
   final passwordController = TextEditingController().obs;
@@ -18,8 +18,8 @@ class LoginViewModel extends GetxController {
   final passwordFocusNode = FocusNode().obs;
 
   RxBool loading = false.obs;
+
   void loginApi() {
-    print(emailController);
     loading.value = true;
     Map data = {
       'username': emailController.value.text,
@@ -34,7 +34,9 @@ class LoginViewModel extends GetxController {
           accessToken: value['accessToken'],
           isLogin: true,
         );
-        userPrefrence.saveUser(userModel);
+        userPreference.saveUser(userModel);
+
+        Get.toNamed(RouteName.userListScreen)!.then((value) => {});
         Utlis.toastMessage("Login successful");
       } else {
         Utlis.toastMessage(value['message'] ?? "Login failed");

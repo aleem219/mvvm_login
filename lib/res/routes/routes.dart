@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mvvm_login/views/login/login_view.dart';
+import 'package:mvvm_login/views/user/user_list.dart';
 import 'package:mvvm_login/res/routes/routes_name.dart';
 
 
@@ -15,10 +16,10 @@ class AppRoutes {
         page: () => LoginView(),
         transitionDuration: Duration(milliseconds: 250),
         transition: Transition.leftToRight),
-    // GetPage(
-    //     name: RouteName.homeScreen,
-    //     page: () => Home(),
-    //     transitionDuration: Duration(milliseconds: 250),
-    //     transition: Transition.leftToRight),
+    GetPage(
+        name: RouteName.userListScreen,
+        page: () => UserListScreen(),
+        transitionDuration: Duration(milliseconds: 250),
+        transition: Transition.leftToRight),
   ];
 }
