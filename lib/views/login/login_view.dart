@@ -5,6 +5,8 @@ import 'package:mvvm_login/views/login/widgets/inout_password_widget.dart';
 import 'package:mvvm_login/views/login/widgets/login_button_widget.dart';
 import 'package:mvvm_login/res/color/colors.dart';
 import 'package:mvvm_login/view_models/controllers/login/login_controller.dart';
+import 'package:network_checker/network_checker.dart';
+// import 'package:network_checker/network_checker.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -32,39 +34,41 @@ class _LoginViewState extends State<LoginView> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Login Now!",
-                style: TextStyle(
-                    color: AppColor.primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 35),
-              ),
-              const SizedBox(
-                height: 80,
-              ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    InputEmailWidget(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    InputPasswordWidget(),
-                  ],
+          child: NetworkChecker(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  "Login Now!",
+                  style: TextStyle(
+                      color: AppColor.primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35),
                 ),
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              LoginButton(
-                formKey: _formKey,
-              ),
-            ],
+                const SizedBox(
+                  height: 80,
+                ),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      InputEmailWidget(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InputPasswordWidget(),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                LoginButton(
+                  formKey: _formKey,
+                ),
+              ],
+            ),
           ),
         ),
       ),
