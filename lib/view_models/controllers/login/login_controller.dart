@@ -22,34 +22,26 @@ class LoginViewModel extends GetxController {
     print(emailController);
     loading.value = true;
     Map data = {
-      'email': emailController.value.text,
+      'username': emailController.value.text,
       'password': passwordController.value.text,
     };
     _api.loginApi(data).then((value) {
       loading.value = false;
       print(value);
-      if (value['error'] == 'user not found') {
-        Utlis.snackBar('Login', value['error']);
-      } else {
+
+      if (value['accessToken'] != null) {
         UserModel userModel = UserModel(
           accessToken: value['accessToken'],
           isLogin: true,
         );
-        // we will this model in sharedprefences
-        userPrefrence
-            .saveUser(userModel)
-            .then((value) => {
-          // for delete the data from RAM after login
-          Get.delete<LoginViewModel>(),
-
-          Get.toNamed(RouteName.homeScreen)!.then((value) => {}),
-          Utlis.snackBar("Login", "login sucessfully"),
-        })
-            .onError((error, stackTrace) => {});
+        userPrefrence.saveUser(userModel);
+        Utlis.toastMessage("Login successful");
+      } else {
+        Utlis.toastMessage(value['message'] ?? "Login failed");
       }
     }).onError((error, stackTrace) {
       loading.value = false;
-      Utlis.snackBar('Error ', error.toString());
+      Utlis.toastMessage(error.toString());
     });
   }
 }

@@ -27,7 +27,7 @@ class _InputPasswordWidgetState extends State<InputPasswordWidget> {
       // obscureText: true,
       validator: (Value) {
         if (Value!.isEmpty) {
-          Utlis.toastMessage("Enter password and email");
+          return "";
         }
         return null;
       },

@@ -14,7 +14,7 @@ class InputEmailWidget extends StatelessWidget {
       focusNode: loginVM.emailFocusNode.value,
       validator: (Value) {
         if (Value!.isEmpty) {
-          Utlis.toastMessage("value is empty");
+          return "";
         }
         return null;
       },
