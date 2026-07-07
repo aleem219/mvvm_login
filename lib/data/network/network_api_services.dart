@@ -1,6 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
@@ -16,9 +16,13 @@ class NetworkApiServices extends BaseApiService {
       await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } on SocketException {
-      throw InternetException('');
-    } on RequestTimeOUt {
-      throw RequestTimeOUt();
+      throw InternetException('No internet connection');
+    } on HttpException {
+      throw FetchDataException('No internet connection');
+    } on FormatException {
+      throw FetchDataException('Bad response format');
+    } on TimeoutException {
+      throw RequestTimeOUt('Request timed out');
     }
 
     return responseJson;
@@ -41,9 +45,13 @@ class NetworkApiServices extends BaseApiService {
           .timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } on SocketException {
-      throw InternetException('');
-    } on RequestTimeOUt {
-      throw RequestTimeOUt();
+      throw InternetException('No internet connection');
+    } on HttpException {
+      throw FetchDataException('No internet connection');
+    } on FormatException {
+      throw FetchDataException('Bad response format');
+    } on TimeoutException {
+      throw RequestTimeOUt('Request timed out');
     }
     if (kDebugMode) {
       print("json response: $responseJson");
@@ -52,17 +60,54 @@ class NetworkApiServices extends BaseApiService {
   }
 
   dynamic returnResponse(http.Response response) {
-    print(response.body.toString());
+    if (kDebugMode) {
+      print(response.body.toString());
+    }
+
+    // Try to decode body safely — some error responses come back empty or as plain text
+    dynamic decodeBody() {
+      if (response.body.isEmpty) return null;
+      try {
+        return jsonDecode(response.body);
+      } on FormatException {
+        // Not valid JSON — return raw text instead of crashing
+        return response.body;
+      }
+    }
+
     switch (response.statusCode) {
       case 200:
-        dynamic responseJson = jsonDecode(response.body);
-        return responseJson;
+      case 201:
+        return decodeBody();
+
       case 400:
-        dynamic responseJson = jsonDecode(response.body);
-        return responseJson;
+        throw BadRequestException(decodeBody()?.toString() ?? 'Bad request');
+
+      case 401:
+        throw UnauthorisedException(
+            decodeBody()?.toString() ?? 'Unauthorised, please log in again');
+
+      case 403:
+        throw UnauthorisedException(
+            decodeBody()?.toString() ?? 'Forbidden');
+
+      case 404:
+        throw FetchDataException(
+            decodeBody()?.toString() ?? 'Resource not found');
+
+      case 409:
+        throw BadRequestException(
+            decodeBody()?.toString() ?? 'Conflict occurred');
+
+      case 500:
+      case 502:
+      case 503:
+        throw FetchDataException(
+            'Server error (${response.statusCode}). Please try again later.');
+
       default:
         throw FetchDataException(
-            'error while communication ' + response.statusCode.toString());
+            'Error occurred while communicating with server: ${response.statusCode}');
     }
   }
 }
