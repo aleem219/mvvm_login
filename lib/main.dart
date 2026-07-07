@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'views/login/login_view.dart';
-import 'views/user/user_list.dart';
+import 'views/user/userlist/user_list_view.dart';
 import 'res/routes/routes.dart';
 
 void main() {

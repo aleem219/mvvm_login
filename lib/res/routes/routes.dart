@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mvvm_login/views/login/login_view.dart';
-import 'package:mvvm_login/views/user/user_list.dart';
+import 'package:mvvm_login/views/user/userlist/user_list_view.dart';
 import 'package:mvvm_login/res/routes/routes_name.dart';
 
 
