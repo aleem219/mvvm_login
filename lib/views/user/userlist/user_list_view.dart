@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvvm_login/views/user/userlist/widgets/user_card.dart';
 import '../../../view_models/controllers/user/userlist/user_list_controller.dart';
+import 'package:mvvm_login/res/components/custom_app_bar.dart';
 
 class UserListScreen extends StatelessWidget {
   const UserListScreen({super.key});
@@ -11,14 +12,7 @@ class UserListScreen extends StatelessWidget {
     final UserListViewModel controller = Get.put(UserListViewModel());
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('User List'),
-        backgroundColor: Colors.teal,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'User List'),
       backgroundColor: Colors.teal.shade50,
       body: SafeArea(
         child: Obx(() {
