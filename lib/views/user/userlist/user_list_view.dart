@@ -26,7 +26,16 @@ class UserListScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             itemCount: controller.users.length,
             itemBuilder: (context, index) {
-              return UserCard(user: controller.users[index]);
+              final user = controller.users[index];
+              return UserCard(
+                user: user,
+                onTap: () {
+                  print('Card tapped: ${user.fullName}');
+                },
+                onButtonTap: () {
+                  print('Button tapped: ${user.fullName}');
+                },
+              );
             },
           );
         }),
