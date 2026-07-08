@@ -7,6 +7,7 @@ import 'package:mvvm_login/res/color/colors.dart';
 import 'package:mvvm_login/view_models/controllers/login/login_controller.dart';
 import 'package:network_checker/network_checker.dart';
 import 'package:mvvm_login/views/login/widgets/auth_links_widget.dart';
+import 'package:mvvm_login/views/login/widgets/new_user_widget.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -61,16 +62,22 @@ class _LoginViewState extends State<LoginView> {
                     ],
                   ),
                 ),
-                 SizedBox(
-                  height: 40,
-                ),
-                LoginButton(
-                  formKey: _formKey,
-                ),
                 AuthLinksWidget(
                   onAlreadyLoggedIn: () { },
                   onForgotPassword: () { },
                 ),
+                SizedBox(
+                  height: 30,
+                ),
+                LoginButton(
+                  formKey: _formKey,
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                NewUserWidget(onSignUp: () {
+                  print('Signup is tapped');
+                }),
               ],
             ),
           ),
