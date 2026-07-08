@@ -36,49 +36,54 @@ class _LoginViewState extends State<LoginView> {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: NetworkChecker(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                 Text(
-                  "Login Now!",
-                  style: TextStyle(
-                      color: AppColor.primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 35),
-                ),
-                 SizedBox(
-                  height: 80,
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      InputEmailWidget(),
-                       SizedBox(
-                        height: 20,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Login Now!",
+                            style: TextStyle(
+                                color: AppColor.primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35),
+                          ),
+                          const SizedBox(height: 80),
+                          Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                InputEmailWidget(),
+                                const SizedBox(height: 20),
+                                InputPasswordWidget(),
+                              ],
+                            ),
+                          ),
+                          AuthLinksWidget(
+                            onAlreadyLoggedIn: () {},
+                            onForgotPassword: () {},
+                          ),
+                          const SizedBox(height: 30),
+                          LoginButton(
+                            formKey: _formKey,
+                          ),
+                          const SizedBox(height: 8),
+                          NewUserWidget(onSignUp: () {
+                            print('Signup is tapped');
+                          }),
+                        ],
                       ),
-                      InputPasswordWidget(),
-                    ],
+                    ),
                   ),
-                ),
-                AuthLinksWidget(
-                  onAlreadyLoggedIn: () { },
-                  onForgotPassword: () { },
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                LoginButton(
-                  formKey: _formKey,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                NewUserWidget(onSignUp: () {
-                  print('Signup is tapped');
-                }),
-              ],
+                );
+              },
             ),
           ),
         ),
