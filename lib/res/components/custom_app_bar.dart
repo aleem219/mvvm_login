@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       backgroundColor: backgroundColor,
       automaticallyImplyLeading: showBackButton,
-      titleSpacing: 20,
+      titleSpacing: 12,
       leading: showBackButton
           ? IconButton(
         icon: const Icon(Icons.arrow_back),

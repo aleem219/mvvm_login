@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'views/login/login_view.dart';
 import 'views/user/userlist/user_list_view.dart';
 import 'res/routes/routes.dart';
+import 'package:mvvm_login/views/welcome_screen/welcome_screen_view.dart';
 
 void main() {
   runApp(const MyApp());

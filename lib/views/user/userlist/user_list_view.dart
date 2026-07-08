@@ -23,7 +23,7 @@ class UserListScreen extends StatelessWidget {
             return Center(child: Text(controller.errorMessage.value));
           }
           return ListView.builder(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(12),
             itemCount: controller.users.length,
             itemBuilder: (context, index) {
               final user = controller.users[index];

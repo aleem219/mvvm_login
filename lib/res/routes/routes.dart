@@ -13,6 +13,11 @@ class AppRoutes {
     //     transitionDuration: Duration(milliseconds: 250),
     //     transition: Transition.leftToRight),
     GetPage(
+        name: RouteName.welcomeScreen,
+        page: () => LoginView(),
+        transitionDuration: Duration(milliseconds: 250),
+        transition: Transition.leftToRight),
+    GetPage(
         name: RouteName.loginScreen,
         page: () => LoginView(),
         transitionDuration: Duration(milliseconds: 250),
