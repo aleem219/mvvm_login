@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mvvm_login/views/user/userlist/user_list_view.dart';
+import 'package:mvvm_login/view_models/controllers/login/login_controller.dart';
+import 'package:mvvm_login/view_models/controllers/user/userlist/user_list_controller.dart';
 
 class BottomNavScreen extends StatefulWidget {
   const BottomNavScreen({super.key});
@@ -10,6 +13,7 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int _selectedIndex = 0;
+  final loginVM = Get.find<LoginViewModel>();
 
   static const TextStyle optionStyle = TextStyle(
     fontSize: 30,
@@ -26,6 +30,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     setState(() {
       _selectedIndex = index;
     });
+    if (index == 0 && Get.isRegistered<UserListViewModel>()) {
+      Get.find<UserListViewModel>().fetchUsers();
+    }
   }
 
   @override

@@ -9,7 +9,9 @@ class UserListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserListViewModel controller = Get.put(UserListViewModel());
+    final UserListViewModel controller = Get.isRegistered<UserListViewModel>()
+        ? Get.find<UserListViewModel>()
+        : Get.put(UserListViewModel());
 
     return Scaffold(
       appBar: const CustomAppBar(title: 'User List', showBackButton: false),
@@ -29,12 +31,8 @@ class UserListScreen extends StatelessWidget {
               final user = controller.users[index];
               return UserCard(
                 user: user,
-                onTap: () {
-                  print('Card tapped: ${user.fullName}');
-                },
-                onButtonTap: () {
-                  print('Button tapped: ${user.fullName}');
-                },
+                onTap: () => print('Card tapped: ${user.fullName}'),
+                onButtonTap: () => print('Button tapped: ${user.fullName}'),
               );
             },
           );
