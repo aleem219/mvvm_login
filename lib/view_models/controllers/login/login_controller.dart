@@ -5,6 +5,7 @@ import 'package:mvvm_login/models/login/user_model.dart';
 import 'package:mvvm_login/res/repository/login_repository/login_repository.dart';
 import 'package:mvvm_login/res/routes/routes_name.dart';
 import 'package:mvvm_login/view_models/user_prefrence/user_prefrence.dart';
+import 'package:mvvm_login/views/botttom_navigation/bottom_navigation_bar.dart';
 
 class LoginViewModel extends GetxController {
   final _api = LoginRepository();
@@ -36,7 +37,8 @@ class LoginViewModel extends GetxController {
         );
         userPreference.saveUser(userModel);
 
-        Get.toNamed(RouteName.userListScreen)!.then((value) => {});
+        // Get.toNamed(RouteName.userListScreen)!.then((value) => {});
+        Get.toNamed(RouteName.bottomNav)!.then((value) => {});
         Utlis.toastMessage("Login successful");
       } else {
         Utlis.toastMessage(value['message'] ?? "Login failed");

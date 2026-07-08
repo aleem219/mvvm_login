@@ -12,7 +12,7 @@ class UserListScreen extends StatelessWidget {
     final UserListViewModel controller = Get.put(UserListViewModel());
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'User List'),
+      appBar: const CustomAppBar(title: 'User List', showBackButton: false),
       backgroundColor: Colors.teal.shade50,
       body: SafeArea(
         child: Obx(() {
