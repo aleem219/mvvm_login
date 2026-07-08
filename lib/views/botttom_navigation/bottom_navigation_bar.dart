@@ -19,7 +19,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     UserListScreen(),
     Text('Index 1: Business', style: optionStyle),
-    Text('Index 2: School', style: optionStyle),
+    Text('Settings', style: optionStyle),
   ];
 
   void _onItemTapped(int index) {
@@ -36,7 +36,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle), label: 'Users'),
           BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Business'),
-          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'School'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.teal[800],
