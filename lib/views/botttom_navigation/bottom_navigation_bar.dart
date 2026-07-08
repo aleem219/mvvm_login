@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mvvm_login/views/user/userlist/user_list_view.dart';
 import 'package:mvvm_login/view_models/controllers/login/login_controller.dart';
 import 'package:mvvm_login/view_models/controllers/user/userlist/user_list_controller.dart';
+import 'package:mvvm_login/views/Settings/settings_view.dart';
 
 class BottomNavScreen extends StatefulWidget {
   const BottomNavScreen({super.key});
@@ -23,7 +24,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     UserListScreen(),
     Text('Index 1: Business', style: optionStyle),
-    Text('Settings', style: optionStyle),
+    SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
