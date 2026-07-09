@@ -33,11 +33,15 @@ class LoginViewModel extends GetxController {
       if (value['accessToken'] != null) {
         UserModel userModel = UserModel(
           accessToken: value['accessToken'],
+          firstName: value['firstName'],
+          lastName: value['lastName'],
+          email: value['email'],
+          username: value['username'],
+          image: value['image'],
+          id: value['id'],
           isLogin: true,
         );
         userPreference.saveUser(userModel);
-
-        // Get.toNamed(RouteName.userListScreen)!.then((value) => {});
         Get.toNamed(RouteName.bottomNav)!.then((value) => {});
         Utlis.toastMessage("Login successful");
       } else {
