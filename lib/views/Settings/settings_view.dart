@@ -105,7 +105,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         AppDialog.show(
                           context: context,
                           title: 'Logout',
-                          message: 'Are you sure, You want to logout?',
+                          message: 'Are you sure, \nYou want to logout?',
                           titleColor: Colors.teal,
                           primaryButtonText: 'Logout',
                           onPrimaryPressed: () {

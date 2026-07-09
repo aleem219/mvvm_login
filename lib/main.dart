@@ -5,6 +5,7 @@ import 'views/user/userlist/user_list_view.dart';
 import 'res/routes/routes.dart';
 import 'package:mvvm_login/views/welcome_screen/welcome_screen_view.dart';
 import 'package:mvvm_login/view_models/user_prefrence/user_prefrence.dart';
+import 'package:mvvm_login/view_models/controllers/user_provider/user_provider.dart';
 import 'views/botttom_navigation/bottom_navigation_bar.dart';
 
 void main() async {
