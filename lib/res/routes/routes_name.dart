@@ -4,4 +4,5 @@ class RouteName {
   static const String userListScreen = '/user_list';
   static const String bottomNav = '/bottom_navigation_bar';
   static const String welcomeScreen = '/welcome_screen_view';
+  static const String onBoarding = '/onboarding_screen';
 }

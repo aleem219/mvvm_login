@@ -74,7 +74,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 imageUrl: (_user?.image != null && _user!.image!.isNotEmpty)
                     ? _user!.image!
                     : 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200',
-                onTap: () {},
+                onTap: () { },
               ),
             ),
             const SizedBox(height: 8),
