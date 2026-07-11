@@ -4,6 +4,7 @@ import 'package:mvvm_login/views/user/userlist/user_list_view.dart';
 import 'package:mvvm_login/view_models/controllers/login/login_controller.dart';
 import 'package:mvvm_login/view_models/controllers/user/userlist/user_list_controller.dart';
 import 'package:mvvm_login/views/Settings/settings_view.dart';
+import 'package:mvvm_login/views/bussiness/bussiness_view.dart';
 
 class BottomNavScreen extends StatefulWidget {
   const BottomNavScreen({super.key});
@@ -21,9 +22,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     fontWeight: FontWeight.bold, // fixed
   );
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static  List<Widget> _widgetOptions = <Widget>[
     UserListScreen(),
-    Text('Index 1: Business', style: optionStyle),
+    BusinessViewScreen(),
     SettingsScreen(),
   ];
 
