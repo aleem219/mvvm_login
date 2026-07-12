@@ -36,7 +36,7 @@ class _UserCardState extends State<UserCard> {
         margin: const EdgeInsets.symmetric(vertical: 8),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.green[400],
+          color: Colors.teal,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
