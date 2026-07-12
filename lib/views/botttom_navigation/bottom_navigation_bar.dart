@@ -22,7 +22,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     fontWeight: FontWeight.bold, // fixed
   );
 
-  static  List<Widget> _widgetOptions = <Widget>[
+  static  final List<Widget> _widgetOptions = <Widget>[
     UserListScreen(),
     BusinessViewScreen(),
     SettingsScreen(),
