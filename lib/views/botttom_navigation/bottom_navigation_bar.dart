@@ -15,7 +15,6 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int _selectedIndex = 0;
-  // final loginVM = Get.find<LoginViewModel>();
 
   static const TextStyle optionStyle = TextStyle(
     fontSize: 30,
