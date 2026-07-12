@@ -12,6 +12,7 @@ class _BusinessViewScreenState extends State<BusinessViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CustomAppBar(title: 'Grid View', showBackButton: false),
+        backgroundColor: Colors.teal[600],
         body: GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount:2, // 2 columns
