@@ -6,6 +6,7 @@ import 'package:mvvm_login/res/repository/login_repository/login_repository.dart
 import 'package:mvvm_login/res/routes/routes_name.dart';
 import 'package:mvvm_login/view_models/user_prefrence/user_prefrence.dart';
 import 'package:mvvm_login/views/botttom_navigation/bottom_navigation_bar.dart';
+import 'package:mvvm_login/utilis/loading_page.dart';
 
 class LoginViewModel extends GetxController {
   final _api = LoginRepository();
@@ -22,12 +23,21 @@ class LoginViewModel extends GetxController {
 
   void loginApi() {
     loading.value = true;
+
+    // Show the loading overlay, non-dismissible
+    Get.dialog(
+      const LoadingPage(),
+      barrierDismissible: false,
+    );
+
     Map data = {
       'username': emailController.value.text,
       'password': passwordController.value.text,
     };
+
     _api.loginApi(data).then((value) {
       loading.value = false;
+      Get.back(); // close the loading dialog
       print(value);
 
       if (value['accessToken'] != null) {
@@ -49,6 +59,7 @@ class LoginViewModel extends GetxController {
       }
     }).onError((error, stackTrace) {
       loading.value = false;
+      Get.back(); // close the loading dialog even on error
       Utlis.toastMessage(error.toString());
     });
   }
