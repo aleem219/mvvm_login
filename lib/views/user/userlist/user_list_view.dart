@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mvvm_login/views/user/userlist/widgets/user_card.dart';
 import '../../../view_models/controllers/user/userlist/user_list_controller.dart';
 import 'package:mvvm_login/res/components/custom_app_bar.dart';
+import 'package:mvvm_login/utilis/loading_page.dart';
 
 class UserListScreen extends StatelessWidget {
   const UserListScreen({super.key});
@@ -19,7 +20,10 @@ class UserListScreen extends StatelessWidget {
       body: SafeArea(
         child: Obx(() {
           if (controller.loading.value) {
-            return const Center(child: CircularProgressIndicator());
+            return const LoadingPage();
+          }
+          if (controller.errorMessage.value.isNotEmpty) {
+            return Center(child: Text(controller.errorMessage.value));
           }
           if (controller.errorMessage.value.isNotEmpty) {
             return Center(child: Text(controller.errorMessage.value));
