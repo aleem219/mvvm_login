@@ -33,7 +33,6 @@ class _AuthLinksWidgetState extends State<AuthLinksWidget> {
       _rememberMe = !_rememberMe;
     });
     widget.onRememberMeChanged?.call(_rememberMe);
-    // Keep original callback working if you still use it elsewhere
     widget.onAlreadyLoggedIn();
   }
 
