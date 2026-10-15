@@ -4,13 +4,14 @@ import 'package:mvvm_login/views/login/login_view.dart';
 import 'package:mvvm_login/views/user/userlist/user_list_view.dart';
 import 'package:mvvm_login/res/routes/routes_name.dart';
 import 'package:mvvm_login/views/onboarding/onboarding_screen.dart';
+import 'package:mvvm_login/views/welcome_screen/welcome_screen_view.dart';
 
 
 class AppRoutes {
   static appRoutes() => [
     GetPage(
         name: RouteName.welcomeScreen,
-        page: () => LoginView(),
+        page: () => WelcomeScreenView(),
         transitionDuration: Duration(milliseconds: 250),
         transition: Transition.leftToRight),
     GetPage(
